@@ -94,6 +94,7 @@ set spell
 set spelllang=en_us
 set number
 set path+=~
+set ignorecase smartcase
 
 " Room for "fold" indicator
 set foldcolumn=1
