@@ -1,28 +1,51 @@
-#=============================================================================
-# dark_powered.toml --- dark powered configuration example for SpaceVim
-# Copyright (c) 2016-2017 Wang Shidong & Contributors
-# Author: Wang Shidong < wsdjeg at 163.com >
-# URL: https://spacevim.org
-# License: GPLv3
-#=============================================================================
-
-# All SpaceVim option below [option] section
 [options]
-    # set spacevim theme. by default colorscheme layer is not loaded,
-    # if you want to use more colorscheme, please load the colorscheme
-    # layer
+    #autocomplete_method = "neocomplete" # let the default heuristic work
+    checkinstall = false
     colorscheme = "gruvbox"
-    background = "dark"
-    # Disable guicolors in basic mode, many terminal do not support 24bit
-    # true colors
+    colorscheme_bg = "dark"
+    default_indent = 4
+    enable_ale = false
+    #enable_bepo_layout = false
+    enable_cursorline = true
+    enable_debug = false
+    enable_googlesuggest = true
     enable_guicolors = true
-    # Disable statusline separator, if you want to use other value, please
-    # install nerd fonts
-    statusline_separator = "arrow"
-    statusline_inactive_separator = "arrow"
+    enable_insert_leader = true
+    enable_key_frequency = true
+    enable_neomake = true
+    enable_statusline_bfpath = false
+    enable_statusline_mode = true
+    enable_statusline_tag = true
+    #enable_ycm = true
+    error_symbol = "+"
+    filemanager = "defx" # or: nerdtree, defx, vimfiler (deprecated)
+    filetree_direction = "right" # or: left
+    #guifont = "SauceCodePro Nerd Font Mono:h11"
+    home_files_number = 10
+    info_symbol = "i"
+    #language = 'en_US.utf8'
+    lint_on_the_fly = true
+    max_column = 120
+    #plugin_bundle_dir = "~/.cache/vimfiles"
+    #plugin_manager_processes = 4
+    realtime_leader_guide = true
+    #keep_server_alive = true
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_display_mode = false
+    relativenumber = true
+    update_retry_cnt = 3
+    sidebar_width = 30
+    simple_mode = false
+    #snippet_engine = "neosnippet" # or: "ultisnips"
+    statusline_iseparator = "arrow"
+    #statusline_left_sections = []
+    statusline_separator = "arrow"
+    terminal_cursor_shape = 2
+    warning_symbol = '!'
+    windows_leader = "s"
+
+    bootstrap_after = "myvimrc#after"
 
 # Enable autocomplete layer
 [[layers]]
@@ -31,12 +54,61 @@ auto-completion-return-key-behavior = "complete"
 auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
+name = 'core#tabline'
+enable = false # disabled because tabline is messing up maximized nvim-qt 
+
+[[layers]]
+name = 'exprfold'
+
+#  Key         Mode            Function
+#  ----------------------------------------------------
+#  ZB          normal          Open fold block template
+#  ZF          normal          Fold block
+#  ZC          normal          Fold block comment
+
+[[layers]]
+name = "github"
+
+#  Mode      Key           Function
+#  -------------------------------------------------------------
+#  normal    SPC g h i     show issues
+#  normal    SPC g h a     show activities
+#  normal    SPC g h d     show dashboard
+#  normal    SPC g h f     show current file in browser
+#  normal    SPC g h I     show issues in browser
+#  normal    SPC g h p     show PRs in browser
+
+[[layers]]
 name = 'shell'
 default_position = 'top'
 default_height = 30
 
 [[layers]]
 name = 'incsearch'
+
+#  key         mode        description
+#  /           n/v         incsearch forward
+#  ?           n/v         incsearch backward
+#  g/          n/v         incsearch stay
+#  n           n           nohlsearch n
+#  N           n           nohlsearch N
+#  *           n           nohlsearch *
+#  g*          n           nohlsearch g*
+#  #           n           nohlsearch #
+#  g#          n           nohlsearch g#
+#  z/          n           incsearch fuzzy /
+#  z?          n           incsearch fuzzy ?
+#  zg?         n           incsearch fuzzy g?
+#  <Space>/    n           incsearch easymotion
+
+#[[layers]]
+#name = 'tmux'
+#  Key       Mode        Function
+#  ------------------------------
+#  <C-h>     normal      Switch to vim/tmux pane in left direction
+#  <C-j>     normal      Switch to vim/tmux pane in down direction
+#  <C-k>     normal      Switch to vim/tmux pane in up direction
+#  <C-l>     normal      Switch to vim/tmux pane in right direction
 
 [[layers]]
 name = 'lang#c'
