@@ -8,4 +8,4 @@ else
   cmd="cp -rv"
 fi
 
-eval $cmd \"$HOME\"/.SpaceVim{,.d} .
+eval $cmd \"$HOME\"/.SpaceVim.d .
