@@ -2,5 +2,5 @@
 
 _rootdir=${_rootdir:-"$(dirname "$(readlink -f "$0")")"}
 
-rm -rf "$_rootdir"/.SpaceVim{,.d}
+rm -rf "$_rootdir"/.SpaceVim.d
 "$_rootdir/pull.sh"

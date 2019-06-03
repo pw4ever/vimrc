@@ -2,5 +2,5 @@
 
 _rootdir=${_rootdir:-"$(dirname "$(readlink -f "$0")")"}
 
-rm -rf "$HOME"/.SpaceVim{,.d} "$HOME"/.vim{,rc} "$HOME"/.config/nvim
+rm -rf "$HOME"/.SpaceVim{,.d} "$HOME"/.config/nvim
 "$_rootdir/push.sh"
