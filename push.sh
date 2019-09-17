@@ -9,6 +9,8 @@ else
 fi
 
 eval $cmd \"$_rootdir\"/.SpaceVim{,.d} \"$HOME\"
+
+mkdir -p "$HOME/.config"
 for i in "$HOME/.config/nvim"; do
   ln -sf "$HOME/.SpaceVim" "$i"
 done
