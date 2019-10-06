@@ -10,13 +10,7 @@ fi
 
 eval $cmd \"$_rootdir\"/.SpaceVim.d \"$HOME\"
 
-s="$_rootdir/.SpaceVim/docs/install.sh"
-if [[ -f "$s" ]]; then
-    bash "$s"
-else
-    curl -sLf https://spacevim.org/install.sh | bash
-fi
-unset s
+curl -sLf https://spacevim.org/install.sh | bash
 
-nvim +SPUpdate +qall
-vim +SPUpdate +qall
+nvim '+SPUpdate'
+vim '+SPUpdate'
