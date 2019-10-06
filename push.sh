@@ -8,6 +8,17 @@ else
   cmd="cp -rv"
 fi
 
+# source helper functions
+script="$_rootdir/.SpaceVim/docs/install.sh"
+tmp=$(mktemp)
+sed -n '1,/^main/{/^main/b;p}' "$script" > "$tmp"
+source "$tmp"
+unset script tmp
+
+check_requirements
+install_package_manager
+install_fonts
+
 eval $cmd \"$_rootdir\"/.SpaceVim{,.d} \"$HOME\"
 
 mkdir -p "$HOME/.config"
