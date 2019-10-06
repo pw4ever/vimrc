@@ -18,7 +18,5 @@ else
 fi
 unset s
 
-nvim --headless +SPUpdate +qall
-nvim --headless +SPUpdate +qall
-vim +SPUpdate +qall
+nvim +SPUpdate +qall
 vim +SPUpdate +qall
