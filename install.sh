@@ -1,4 +1,4 @@
-#!/bin/bash - 
+#!/bin/bash -
 
 _rootdir=${_rootdir:-"$(dirname "$(readlink -f "$0")")"}
 
@@ -8,6 +8,17 @@ else
   cmd="cp -rv"
 fi
 
-curl -sLf https://spacevim.org/install.sh | bash
-
 eval $cmd \"$_rootdir\"/.SpaceVim.d \"$HOME\"
+
+s="$_rootdir/.SpaceVim/docs/install.sh"
+if [[ -f "$s" ]]; then
+    bash "$s"
+else
+    curl -sLf https://spacevim.org/install.sh | bash
+fi
+unset s
+
+nvim --headless +SPUpdate +qall
+nvim --headless +SPUpdate +qall
+vim +SPUpdate +qall
+vim +SPUpdate +qall
