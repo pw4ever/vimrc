@@ -8,8 +8,6 @@ else
   cmd="cp -rv"
 fi
 
-tmp="$_rootdir/.SpaceVim/docs/install.sh"
-bash "$tmp"
-unset tmp
+curl -sLf https://spacevim.org/install.sh | bash
 
 eval $cmd \"$_rootdir\"/.SpaceVim.d \"$HOME\"
