@@ -5,4 +5,6 @@ function! myvimrc#after() abort
     set tabstop=4 expandtab
     set cindent shiftwidth=4
     set autowrite
+    set wildmode=longest,list,full
+    set wildmenu
 endfunction
