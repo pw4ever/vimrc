@@ -1,87 +1,13 @@
 [options]
-    #autocomplete_method = "neocomplete" # let the default heuristic work
-    checkinstall = false
-    colorscheme = "gruvbox"
-    colorscheme_bg = "dark"
     default_indent = 4
-    enable_ale = false
-    #enable_bepo_layout = false
-    enable_cursorline = true
-    enable_debug = false
-    enable_googlesuggest = true
-    enable_guicolors = true
-    enable_insert_leader = true
-    enable_key_frequency = true
-    enable_neomake = true
-    enable_statusline_bfpath = false
-    enable_statusline_mode = true
-    enable_statusline_tag = true
-    #enable_ycm = true
-    error_symbol = "+"
-    filemanager = "defx" # or: nerdtree, defx, vimfiler (deprecated)
-    filetree_direction = "right" # or: left
-    #guifont = "SauceCodePro Nerd Font Mono:h11"
     home_files_number = 10
-    info_symbol = "i"
-    #language = 'en_US.utf8'
-    lint_on_the_fly = true
-    max_column = 120
-    #plugin_bundle_dir = "~/.cache/vimfiles"
-    #plugin_manager_processes = 4
-    realtime_leader_guide = true
-    #keep_server_alive = true
-    buffer_index_type = 4
-    enable_tabline_filetype_icon = true
-    enable_statusline_display_mode = false
     relativenumber = true
-    update_retry_cnt = 3
-    sidebar_width = 30
-    simple_mode = false
-    #snippet_engine = "neosnippet" # or: "ultisnips"
-    statusline_iseparator = "arrow"
-    #statusline_left_sections = []
-    statusline_separator = "arrow"
-    terminal_cursor_shape = 2
-    warning_symbol = '!'
-    windows_leader = "s"
 
     bootstrap_after = "myvimrc#after"
-
-# Enable autocomplete layer
-[[layers]]
-name = 'autocomplete'
-auto-completion-return-key-behavior = "complete"
-auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
 name = 'core#tabline'
 enable = false # disabled because tabline is messing up maximized nvim-qt 
-
-[[layers]]
-name = 'exprfold'
-
-#  Key         Mode            Function
-#  ----------------------------------------------------
-#  ZB          normal          Open fold block template
-#  ZF          normal          Fold block
-#  ZC          normal          Fold block comment
-
-[[layers]]
-name = "github"
-
-#  Mode      Key           Function
-#  -------------------------------------------------------------
-#  normal    SPC g h i     show issues
-#  normal    SPC g h a     show activities
-#  normal    SPC g h d     show dashboard
-#  normal    SPC g h f     show current file in browser
-#  normal    SPC g h I     show issues in browser
-#  normal    SPC g h p     show PRs in browser
-
-[[layers]]
-name = 'shell'
-default_position = 'top'
-default_height = 30
 
 [[layers]]
 name = 'incsearch'
@@ -101,41 +27,8 @@ name = 'incsearch'
 #  zg?         n           incsearch fuzzy g?
 #  <Space>/    n           incsearch easymotion
 
-#[[layers]]
-#name = 'tmux'
-#  Key       Mode        Function
-#  ------------------------------
-#  <C-h>     normal      Switch to vim/tmux pane in left direction
-#  <C-j>     normal      Switch to vim/tmux pane in down direction
-#  <C-k>     normal      Switch to vim/tmux pane in up direction
-#  <C-l>     normal      Switch to vim/tmux pane in right direction
-
 [[layers]]
 name = 'lang#c'
 
 [[layers]]
-name = 'lang#csharp'
-
-[[layers]]
-name = 'lang#go'
-
-[[layers]]
-name = 'lang#java'
-
-[[layers]]
-name = 'lang#kotlin'
-
-[[layers]]
-name = 'lang#lua'
-
-[[layers]]
 name = 'lang#python'
-
-[[layers]]
-name = 'lang#rust'
-
-[[layers]]
-name = 'lang#scala'
-
-[[layers]]
-name = 'lang#xml'
