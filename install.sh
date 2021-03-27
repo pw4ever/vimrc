@@ -11,3 +11,6 @@ fi
 curl -sLf https://spacevim.org/install.sh | bash
 
 eval $cmd \"$_rootdir\"/.SpaceVim.d \"$HOME\"
+
+nvim '+SPUpdate'
+vim '+SPUpdate'
