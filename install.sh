@@ -12,5 +12,7 @@ curl -sLf https://spacevim.org/install.sh | bash
 
 eval $cmd \"$_rootdir\"/.SpaceVim.d \"$HOME\"
 
-nvim '+SPUpdate' '+VimProcInstall' '+qall'
-vim '+SPUpdate' '+VimProcInstall' '+qall'
+#nvim '+SPUpdate' '+VimProcInstall' '+qall'
+nvim '+VimProcInstall'
+#vim '+SPUpdate' '+VimProcInstall' '+qall'
+vim '+VimProcInstall'
