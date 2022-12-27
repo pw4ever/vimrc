@@ -10,6 +10,9 @@ name = 'core#tabline'
 enable = false # disabled because tabline is messing up maximized nvim-qt 
 
 [[layers]]
+name = 'fzf'
+
+[[layers]]
 name = 'incsearch'
 
 #  key         mode        description
@@ -31,7 +34,40 @@ name = 'incsearch'
 name = 'lang#c'
 
 [[layers]]
-name = 'lang#python'
+name = 'lang#go'
 
 [[layers]]
 name = 'lang#html'
+
+[[layers]]
+name = 'lang#lua'
+
+[[layers]]
+name = 'lang#python'
+
+[[layers]]
+name = 'lang#rust'
+
+[[layers]]
+name = 'lang#sh'
+
+[[layers]]
+name = 'lang#vim'
+
+[[layers]]
+name = 'shell'
+
+[[layers]]
+name = 'ssh'
+
+[[layers]]
+name = 'sudo'
+
+[[layers]]
+name = 'tools'
+
+[[layers]]
+name = 'ui'
+
+[[layers]]
+name = 'VersionControl'
