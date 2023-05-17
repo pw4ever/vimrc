@@ -3,5 +3,4 @@ function! myvimrc#after() abort
     set ignorecase smartcase
     set nobackup writebackup
     set wildmode=longest,list,full
-    set wildmenu
 endfunction
