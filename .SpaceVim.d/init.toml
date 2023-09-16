@@ -2,6 +2,7 @@
     default_indent = 4
     home_files_number = 10
     relativenumber = true
+    guifont="SauceCodePro Nerd Font Mono:h11"
 
     bootstrap_after = "myvimrc#after"
 
