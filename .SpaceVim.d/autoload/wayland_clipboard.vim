@@ -39,10 +39,14 @@ if s:plus_to_w
     vnoremap "+ "w
 endif
 
+let s:copy_args = exists('g:wayland_clipboard_copy_args') ? g:wayland_clipboard_copy_args : []
+
 " pass register contents to wl-copy if the '+' (or 'w') register was used
 function! s:WaylandYank()
-    if v:event['regname'] == '+' || (v:event['regname'] == 'w' && s:plus_to_w)
-        silent call job_start(['wl-copy', '--', getreg(v:event['regname'])], {
+    if v:event['regname'] == '+' ||
+                \ (v:event['regname'] == 'w' && s:plus_to_w) ||
+                \ (v:event['regname'] == '' && &clipboard =~ 'unnamedplus')
+        silent call job_start(['wl-copy'] + s:copy_args + ['--', getreg(v:event['regname'])], {
             \   "in_io": "null", "out_io": "null", "err_io": "null",
             \   "stoponexit": "",
             \ })
@@ -60,15 +64,42 @@ augroup END
 " Pasting {{{
 
 " remap paste commands to first pull in clipboard contents with wl-paste
-let prepaste = "silent let @\"=substitute(system('wl-paste --no-newline'), \"\\r\", '', 'g')"
 
-for p in ['p', 'P']
-    execute "nnoremap <silent> \"+" . p . " :<C-U>" . prepaste . " \\| exec 'normal! ' . v:count1 . '" . p . "'<CR>"
-endfor
+let s:paste_args = exists('g:wayland_clipboard_paste_args') ? g:wayland_clipboard_paste_args : []
+let s:paste_args_str = empty(s:paste_args) ? '' : ' ' . join(s:paste_args)
 
-for cr in ['<C-R>', '<C-R><C-R>', '<C-R><C-O>', '<C-R><C-P>']
-    execute "inoremap <silent> " . cr . "+ <C-O>:<C-U>" . prepaste . "<CR>" . cr . "\""
-endfor
+function! s:clipboard_to_unnamed()
+    silent let @"=substitute(system('wl-paste --no-newline' . s:paste_args_str), "\r", '', 'g')
+endfunction
+
+function! s:put(p, fallback)
+    if a:fallback
+        return a:p
+    endif
+
+    call s:clipboard_to_unnamed()
+    return '""' . a:p
+endfunction
+
+function! s:ctrl_r(cr)
+    call s:clipboard_to_unnamed()
+    return a:cr . '"'
+endfunction
+
+nnoremap <expr> <silent> "+p <SID>put('p', v:false)
+nnoremap <expr> <silent> "+P <SID>put('P', v:false)
+nnoremap <expr> <silent> p <SID>put('p', &clipboard !~ 'unnamedplus')
+nnoremap <expr> <silent> P <SID>put('P', &clipboard !~ 'unnamedplus')
+
+vnoremap <expr> <silent> "+p <SID>put('p', v:false)
+vnoremap <expr> <silent> "+P <SID>put('P', v:false)
+vnoremap <expr> <silent> p <SID>put('p', &clipboard !~ 'unnamedplus')
+vnoremap <expr> <silent> P <SID>put('P', &clipboard !~ 'unnamedplus')
+
+inoremap <expr> <silent> <C-R>+ <SID>ctrl_r("\<C-R>")
+inoremap <expr> <silent> <C-R><C-R>+ <SID>ctrl_r("\<C-R>\<C-R>")
+inoremap <expr> <silent> <C-R><C-O>+ <SID>ctrl_r("\<C-R>\<C-O>")
+inoremap <expr> <silent> <C-R><C-P>+ <SID>ctrl_r("\<C-R>\<C-P>")
 
 " }}}
 
